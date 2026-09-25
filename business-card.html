@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NDT Executive Business Card — Front & Back</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    @page {
+      size: 85mm 55mm;
+      margin: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #E5E5EA;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .card-page {
+      width: 85mm;
+      height: 55mm;
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+      page-break-inside: avoid;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    /* Print override */
+    @media print {
+      body {
+        background: transparent;
+        padding: 0;
+        gap: 0;
+      }
+      .card-page {
+        box-shadow: none;
+      }
+    }
+
+    /* ==========================================================================
+       SIDE 1: FRONT
+       ========================================================================== */
+    .card-front {
+      background: #0A0A0A;
+      color: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 6mm 8mm;
+      position: relative;
+      background-image: 
+        radial-gradient(circle at 50% 50%, rgba(245, 184, 0, 0.06), transparent 70%);
+    }
+
+    .front-border {
+      position: absolute;
+      inset: 2.5mm;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      pointer-events: none;
+    }
+
+    .front-logo {
+      height: 12mm;
+      width: auto;
+      display: block;
+      margin-bottom: 3.5mm;
+    }
+
+    .front-gold-rule {
+      width: 18mm;
+      height: 1.5px;
+      background: #F5B800;
+      margin-bottom: 3mm;
+    }
+
+    .front-services {
+      font-size: 5pt;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #D2D2D7;
+      line-height: 1.5;
+      margin-bottom: 2.5mm;
+    }
+
+    .front-location {
+      font-size: 4.5pt;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #8E8E93;
+    }
+
+    /* ==========================================================================
+       SIDE 2: BACK
+       ========================================================================== */
+    .card-back {
+      background: #111113;
+      color: #FFFFFF;
+      padding: 5mm 6mm;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-left: 2mm solid #F5B800;
+    }
+
+    .back-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 2mm;
+    }
+
+    .back-name {
+      font-size: 6.8pt;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+    }
+
+    .back-badge {
+      font-size: 4.5pt;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #000;
+      background: #F5B800;
+      padding: 1px 4px;
+      border-radius: 2px;
+    }
+
+    .back-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 4mm;
+      flex-grow: 1;
+      padding: 2mm 0;
+    }
+
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.3mm;
+      flex-grow: 1;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 2mm;
+      font-size: 4.8pt;
+      font-weight: 500;
+      color: #D2D2D7;
+      text-decoration: none;
+      line-height: 1.1;
+    }
+
+    .contact-item strong {
+      color: #FFFFFF;
+      font-weight: 700;
+    }
+
+    .contact-item.accent strong {
+      color: #F5B800;
+    }
+
+    .contact-icon {
+      width: 3.5mm;
+      height: 3.5mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-icon svg {
+      width: 100%;
+      height: 100%;
+      fill: #8E8E93;
+    }
+
+    .qr-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1mm;
+      flex-shrink: 0;
+    }
+
+    .qr-frame {
+      background: #FFFFFF;
+      padding: 1.2mm;
+      border-radius: 3px;
+      display: block;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    }
+
+    .qr-frame img {
+      width: 17mm;
+      height: 17mm;
+      display: block;
+    }
+
+    .qr-label {
+      font-size: 3.8pt;
+      font-weight: 700;
+      color: #F5B800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .back-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 1.8mm;
+      font-size: 4.2pt;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #8E8E93;
+    }
+
+    .back-footer span:last-child {
+      color: #F5B800;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       CARD FRONT
+       ========================================================================== -->
+  <div class="card-page card-front">
+    <div class="front-border"></div>
+    <img src="ndt-logo-white.png" class="front-logo" alt="NDT Logo">
+    <div class="front-gold-rule"></div>
+    <div class="front-services">
+      HEAVY EQUIPMENT RENTAL &bull; CRANE RENTAL<br>
+      HEAVY TRANSPORTATION &bull; RIGGING
+    </div>
+    <div class="front-location">
+      DUBAI &bull; UNITED ARAB EMIRATES
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       CARD BACK
+       ========================================================================== -->
+  <div class="card-page card-back">
+    <div class="back-header">
+      <div class="back-name">NABEEL DAR TRANSPORT LLC</div>
+      <div class="back-badge">25T &mdash; 400T</div>
+    </div>
+
+    <div class="back-content">
+      <div class="contact-list">
+        <!-- Phone -->
+        <div class="contact-item accent">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          </div>
+          <span>Tel / WhatsApp: <strong>+971 55 295 2354</strong></span>
+        </div>
+
+        <!-- Sales Email -->
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </div>
+          <span>Sales: <strong>salesenquiry@nabeeldartransport.com</strong></span>
+        </div>
+
+        <!-- Info Email -->
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+          </div>
+          <span>Info: <strong>info@nabeeldartransport.com</strong></span>
+        </div>
+
+        <!-- Web -->
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          </div>
+          <span>Web: <strong>nabeeldartransport.com</strong></span>
+        </div>
+
+        <!-- Location -->
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          <span>Location: <strong>Dubai, United Arab Emirates</strong></span>
+        </div>
+      </div>
+
+      <!-- Scannable WhatsApp QR Code -->
+      <div class="qr-column">
+        <div class="qr-frame">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https%3A%2F%2Fwa.me%2F971552952354%3Ftext%3DHello%2520Nabeel%2520Dar%2520Transport%2520LLC%252C%2520I%2520would%2520like%2520to%2520enquire%2520about%2520equipment%2520rental." alt="WhatsApp QR">
+        </div>
+        <div class="qr-label">Scan to Inquire</div>
+      </div>
+    </div>
+
+    <div class="back-footer">
+      <span>Mobile Cranes &bull; Lowbeds &bull; Rigging</span>
+      <span>24/7 Project Support</span>
+    </div>
+  </div>
+
+</body>
+</html>

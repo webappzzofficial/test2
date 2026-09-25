@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#111111">
+  <meta name="description" content="Nabeel Dar Transport LLC — crane rental, heavy lifting and transport solutions across the UAE.">
+  <title>NDT — Nabeel Dar Transport LLC</title>
+  <style>
+    :root {
+      --ink: #1d1d1f;
+      --secondary: #6e6e73;
+      --tertiary: #86868b;
+      --canvas: #f5f5f7;
+      --surface: #ffffff;
+      --line: rgba(29, 29, 31, .10);
+      --line-strong: rgba(29, 29, 31, .16);
+      --yellow: #f5b800;
+      --yellow-soft: #fff5ce;
+      --green: #1d9b55;
+      --radius-xl: 32px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      color-scheme: light;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+    body {
+      min-height: 100vh;
+      min-height: 100svh;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: #ffffff;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.45;
+    }
+
+    button, a { font: inherit; -webkit-tap-highlight-color: transparent; }
+    button { color: inherit; }
+    a { color: inherit; }
+    .page-shell { width: 100%; }
+
+    .profile-card {
+      position: relative;
+      overflow: clip;
+      background: var(--surface);
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .hero {
+      position: relative;
+      min-height: clamp(410px, 49vw, 570px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      isolation: isolate;
+      color: #fff;
+      background: #111;
+      padding: clamp(24px, 4vw, 48px) 0;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(180deg, rgba(0, 0, 0, .16), rgba(0, 0, 0, .24) 35%, rgba(0, 0, 0, .84));
+    }
+
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 52%;
+      transform: scale(1.01);
+    }
+
+    .hero-topline {
+      width: min(calc(100% - 48px), 1120px);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .monogram {
+      width: 50px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, .25);
+      border-radius: 15px;
+      background: rgba(0, 0, 0, .36);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .monogram img { display: block; width: 38px; height: 38px; object-fit: contain; }
+
+    .verified-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255, 255, 255, .20);
+      border-radius: 999px;
+      background: rgba(0, 0, 0, .30);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      font-size: 11px;
+      font-weight: 650;
+      letter-spacing: .02em;
+    }
+
+    .verified-pill svg { width: 14px; height: 14px; fill: var(--yellow); }
+    .hero-copy {
+      width: min(calc(100% - 48px), 1120px);
+      max-width: none;
+      margin: 0 auto;
+      padding-top: 90px;
+    }
+
+    .eyebrow {
+      margin-bottom: 9px;
+      color: var(--yellow);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 760px;
+      font-size: clamp(42px, 6.2vw, 72px);
+      font-weight: 700;
+      letter-spacing: -.045em;
+      line-height: 1.02;
+    }
+
+    .hero-description {
+      max-width: 610px;
+      margin-top: 18px;
+      color: rgba(255, 255, 255, .76);
+      font-size: clamp(16px, 2vw, 19px);
+      letter-spacing: -.01em;
+    }
+
+    .content {
+      width: min(calc(100% - 48px), 1120px);
+      margin: 0 auto;
+      padding: clamp(34px, 5vw, 64px) 0 32px;
+    }
+
+    .identity-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .identity-kicker { color: var(--secondary); font-size: 14px; font-weight: 550; }
+    .identity-title { margin-top: 4px; font-size: clamp(25px, 3vw, 34px); font-weight: 700; letter-spacing: -.035em; line-height: 1.12; }
+
+    .location {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+      color: var(--secondary);
+      font-size: 13px;
+    }
+
+    .location svg { width: 15px; height: 15px; fill: currentColor; }
+
+    .availability {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 650;
+      padding-top: 4px;
+    }
+
+    .availability::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+      box-shadow: 0 0 0 4px rgba(29, 155, 85, .10);
+    }
+
+    .primary-button, .secondary-button {
+      width: 100%;
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border-radius: 15px;
+      text-decoration: none;
+      border: 0;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 650;
+      letter-spacing: -.005em;
+      transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+    }
+
+    .primary-button { color: #fff; background: var(--ink); box-shadow: 0 8px 20px rgba(29, 29, 31, .18); }
+    .primary-button svg, .secondary-button svg { width: 18px; height: 18px; fill: currentColor; }
+    .primary-button:hover { background: #000; transform: translateY(-1px); box-shadow: 0 12px 24px rgba(29, 29, 31, .22); }
+
+    .quick-actions {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 14px 0 34px;
+    }
+
+    .quick-action {
+      min-width: 0;
+      min-height: 84px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 10px 4px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, .68);
+      text-decoration: none;
+      color: var(--ink);
+      transition: transform .2s ease, background-color .2s ease, border-color .2s ease;
+    }
+
+    .quick-action:hover { transform: translateY(-2px); background: #fff; border-color: var(--line-strong); }
+    .quick-action svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+    .quick-action span {
+      overflow: hidden;
+      width: 100%;
+      padding: 0 2px;
+      text-align: center;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: var(--secondary);
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-bottom: 48px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, .55);
+    }
+
+    .stat { padding: 22px 10px; text-align: center; }
+    .stat + .stat { border-left: 1px solid var(--line); }
+    .stat strong { display: block; font-size: clamp(17px, 4vw, 22px); font-weight: 700; letter-spacing: -.035em; line-height: 1.05; }
+    .stat span { display: block; margin-top: 5px; color: var(--secondary); font-size: 10px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+    .details-grid { display: grid; gap: clamp(34px, 5vw, 64px); }
+    .details-grid > section { min-width: 0; }
+    .section-heading { margin-bottom: 12px; font-size: 22px; font-weight: 700; letter-spacing: -.03em; }
+    .section-intro { margin: -5px 0 14px; color: var(--secondary); font-size: 13px; }
+
+    .contact-list {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, .60);
+    }
+
+    .contact-row { min-height: 65px; display: flex; align-items: center; gap: 12px; padding: 11px 14px; text-decoration: none; transition: background-color .2s ease; }
+    .contact-row + .contact-row { border-top: 1px solid var(--line); }
+    .contact-row:hover { background: #fff; }
+
+    .contact-symbol {
+      flex: 0 0 auto;
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      background: var(--canvas);
+      color: var(--secondary);
+    }
+
+    .contact-symbol svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .contact-copy { min-width: 0; flex: 1; }
+    .contact-copy small { display: block; margin-bottom: 2px; color: var(--tertiary); font-size: 10px; font-weight: 650; letter-spacing: .055em; text-transform: uppercase; }
+    .contact-copy strong { display: block; overflow: hidden; font-size: 13px; font-weight: 600; letter-spacing: -.01em; text-overflow: ellipsis; white-space: nowrap; }
+    .chevron { flex: 0 0 auto; width: 16px; height: 16px; fill: none; stroke: #b1b1b5; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .capacity-list { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; }
+    .capacity-list span { padding: 7px 10px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255, 255, 255, .68); color: var(--secondary); font-size: 11px; font-weight: 650; }
+    .capacity-list .range-edge { color: #705200; border-color: rgba(245, 184, 0, .36); background: var(--yellow-soft); }
+
+    .service-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; list-style: none; }
+    .service-list li { position: relative; min-height: 48px; display: flex; align-items: center; padding: 10px 10px 10px 28px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255, 255, 255, .56); color: #4f4f53; font-size: 12px; font-weight: 560; }
+    .service-list li::before { content: ""; position: absolute; left: 12px; width: 6px; height: 6px; border-radius: 50%; background: var(--yellow); }
+
+    .document-actions { display: grid; gap: 12px; margin-top: 48px; }
+    .secondary-button { border: 1px solid var(--line); background: rgba(255, 255, 255, .70); }
+    .secondary-button:hover { background: #fff; transform: translateY(-1px); }
+
+    .card-footer { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--tertiary); font-size: 11px; }
+    .footer-mark { color: var(--ink); font-weight: 700; letter-spacing: .04em; }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, .44);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .22s ease, visibility .22s ease;
+    }
+
+    .modal-overlay.active { opacity: 1; visibility: visible; }
+    .modal-card { width: min(100%, 352px); padding: 24px; border: 1px solid rgba(255, 255, 255, .85); border-radius: 28px; background: rgba(255, 255, 255, .94); box-shadow: 0 28px 70px rgba(0, 0, 0, .25); text-align: center; transform: scale(.96) translateY(8px); transition: transform .22s ease; }
+    .modal-overlay.active .modal-card { transform: scale(1) translateY(0); }
+    .modal-icon { width: 42px; height: 42px; display: grid; place-items: center; margin: 0 auto 12px; border-radius: 13px; color: #6b5000; background: var(--yellow-soft); }
+    .modal-icon svg { width: 20px; height: 20px; fill: currentColor; }
+    .modal-card h2 { font-size: 21px; letter-spacing: -.025em; }
+    .modal-card p { margin: 6px auto 17px; color: var(--secondary); font-size: 13px; }
+    .qr-container { display: inline-block; margin-bottom: 16px; padding: 11px; border: 1px solid var(--line); border-radius: 18px; background: #fff; }
+    .qr-container img { display: block; width: 174px; height: 174px; }
+    .modal-actions { display: grid; gap: 8px; }
+    .modal-button { min-height: 45px; border: 0; border-radius: 13px; cursor: pointer; font-size: 13px; font-weight: 650; }
+    .modal-button.copy { color: #fff; background: var(--ink); }
+    .modal-button.close { background: var(--canvas); }
+
+    .toast { position: fixed; z-index: 200; left: 50%; bottom: max(24px, env(safe-area-inset-bottom)); padding: 10px 16px; border-radius: 999px; color: #fff; background: rgba(29, 29, 31, .92); box-shadow: 0 8px 24px rgba(0, 0, 0, .2); font-size: 12px; font-weight: 650; opacity: 0; pointer-events: none; transform: translate(-50%, 20px); transition: opacity .22s ease, transform .22s ease; }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+    :focus-visible { outline: 3px solid rgba(0, 113, 227, .42); outline-offset: 3px; }
+
+    @media (min-width: 760px) {
+      .details-grid { grid-template-columns: .95fr 1.05fr; align-items: start; }
+      .document-actions { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 430px) {
+      .hero { min-height: 430px; }
+      .hero-topline, .hero-copy, .content { width: min(calc(100% - 32px), 1120px); }
+      .hero-copy { padding-top: 64px; }
+      .identity-row { display: block; }
+      .availability { margin-top: 12px; }
+      .quick-actions { gap: 7px; }
+      .quick-action { min-height: 72px; }
+      .service-list { grid-template-columns: 1fr; }
+      .card-footer { display: block; text-align: center; }
+      .footer-mark { display: block; margin-bottom: 4px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <main class="profile-card">
+      <header class="hero">
+        <img class="hero-image" src="assets/hero-crane.webp" alt="NDT mobile crane operating on site">
+        <div class="hero-topline">
+          <div class="monogram"><img src="ndt-logo-white.png" alt="NDT"></div>
+          <div class="verified-pill" aria-label="Verified company profile">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.55 17.6-5.2-5.2 1.9-1.9 3.3 3.3 8.2-8.2 1.9 1.9-10.1 10.1Z"/></svg>
+            Verified company profile
+          </div>
+        </div>
+        <div class="hero-copy">
+          <p class="eyebrow">Built to move what matters</p>
+          <h1>Heavy lifting.<br>Precisely delivered.</h1>
+          <p class="hero-description">Crane rental, heavy transport and engineered lifting solutions across the United Arab Emirates.</p>
+        </div>
+      </header>
+
+      <div class="content">
+        <section class="identity-row" aria-labelledby="company-name">
+          <div>
+            <p class="identity-kicker">Heavy equipment &amp; crane rental</p>
+            <h2 class="identity-title" id="company-name">Nabeel Dar Transport LLC</h2>
+            <p class="location">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg>
+              Dubai, United Arab Emirates
+            </p>
+          </div>
+          <span class="availability">Open for enquiries</span>
+        </section>
+
+        <a href="ndt-contact.vcf" download="NDT-Nabeel-Dar-Transport.vcf" class="primary-button" id="saveContactBtn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 11V7h2v4h4v2h-4v4h-2v-4H7v-2h4Zm1-9a10 10 0 1 0 10 10A10.01 10.01 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8 8.01 8.01 0 0 1-8 8Z"/></svg>
+          Add NDT to contacts
+        </a>
+
+        <nav class="quick-actions" aria-label="Quick contact actions">
+          <a href="tel:+971552952354" class="quick-action" aria-label="Call NDT">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 16.6v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 1.12 3.9 2 2 0 0 1 3.11 1.7h3a2 2 0 0 1 2 1.72 12.8 12.8 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 9.61a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.8 12.8 0 0 0 2.81.7A2 2 0 0 1 21 16.6Z"/></svg>
+            <span>Call</span>
+          </a>
+          <a href="https://wa.me/971552952354?text=Hello%20Nabeel%20Dar%20Transport%20LLC%2C%20I%20would%20like%20to%20enquire%20about%20equipment%20rental." target="_blank" rel="noopener" class="quick-action" aria-label="Message NDT on WhatsApp">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z"/><path d="M8.7 8.3c.7 3.2 2.5 5 5.7 5.7"/></svg>
+            <span>WhatsApp</span>
+          </a>
+          <a href="mailto:salesenquiry@nabeeldartransport.com" class="quick-action" aria-label="Email NDT sales">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <span>Email</span>
+          </a>
+          <a href="https://nabeeldartransport.com" target="_blank" rel="noopener" class="quick-action" aria-label="Visit NDT website">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+            <span>Website</span>
+          </a>
+        </nav>
+
+        <section class="stats" aria-label="NDT at a glance">
+          <div class="stat"><strong>25–400T</strong><span>Crane capacity</span></div>
+          <div class="stat"><strong>UAE</strong><span>Service coverage</span></div>
+          <div class="stat"><strong>24/7</strong><span>Enquiries</span></div>
+        </section>
+
+        <div class="details-grid">
+          <section aria-labelledby="contact-heading">
+            <h2 class="section-heading" id="contact-heading">Direct contacts</h2>
+            <p class="section-intro">Reach the right team in one tap.</p>
+            <div class="contact-list">
+              <a href="tel:+971552952354" class="contact-row">
+                <span class="contact-symbol"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 16.6v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 1.12 3.9 2 2 0 0 1 3.11 1.7h3a2 2 0 0 1 2 1.72 12.8 12.8 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 9.61a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.8 12.8 0 0 0 2.81.7A2 2 0 0 1 21 16.6Z"/></svg></span>
+                <span class="contact-copy"><small>Phone &amp; WhatsApp</small><strong>+971 55 295 2354</strong></span>
+                <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+              </a>
+              <a href="mailto:salesenquiry@nabeeldartransport.com" class="contact-row">
+                <span class="contact-symbol"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+                <span class="contact-copy"><small>Sales enquiries</small><strong>salesenquiry@nabeeldartransport.com</strong></span>
+                <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+              </a>
+              <a href="mailto:info@nabeeldartransport.com" class="contact-row">
+                <span class="contact-symbol"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></span>
+                <span class="contact-copy"><small>General information</small><strong>info@nabeeldartransport.com</strong></span>
+                <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+              </a>
+              <a href="https://nabeeldartransport.com" target="_blank" rel="noopener" class="contact-row">
+                <span class="contact-symbol"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span>
+                <span class="contact-copy"><small>Official website</small><strong>nabeeldartransport.com</strong></span>
+                <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+              </a>
+            </div>
+          </section>
+
+          <section aria-labelledby="services-heading">
+            <h2 class="section-heading" id="services-heading">Fleet &amp; capabilities</h2>
+            <p class="section-intro">A complete lifting and transport partner.</p>
+            <div class="capacity-list" aria-label="Available crane capacities">
+              <span class="range-edge">25T</span><span>50T</span><span>80T</span><span>100T</span><span>150T</span><span>160T</span><span>220T</span><span>300T</span><span class="range-edge">400T</span>
+            </div>
+            <ul class="service-list">
+              <li>Mobile &amp; all-terrain cranes</li>
+              <li>Crawler crane rental</li>
+              <li>Heavy lifting &amp; rigging</li>
+              <li>Heavy transportation</li>
+              <li>Lowbed &amp; flatbed trailers</li>
+              <li>Boom loaders &amp; telehandlers</li>
+              <li>Machinery placement</li>
+              <li>Project mobilisation</li>
+            </ul>
+          </section>
+        </div>
+
+        <div class="document-actions">
+          <a href="NDT_Company_Profile_2026_Digital.pdf" download="NDT_Company_Profile_2026.pdf" class="secondary-button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 3h2v10.17l3.59-3.58L18 11l-6 6-6-6 1.41-1.41L11 13.17V3Zm-6 16h14v2H5v-2Z"/></svg>
+            Download company profile
+          </a>
+          <button class="secondary-button" id="shareBtn" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 16a3 3 0 0 0-2.4 1.2L8.91 13.3a3.04 3.04 0 0 0 0-2.6l6.69-3.9A3 3 0 1 0 15 5a3 3 0 0 0 .09.7L8.04 9.81A3 3 0 1 0 8 14.19l7.09 4.14A3 3 0 1 0 18 16Z"/></svg>
+            Share digital card
+          </button>
+        </div>
+
+        <footer class="card-footer">
+          <span class="footer-mark">NDT</span>
+          <span>© 2026 Nabeel Dar Transport LLC · Dubai, UAE</span>
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-overlay" id="qrModal" role="dialog" aria-modal="true" aria-labelledby="share-title" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 16a3 3 0 0 0-2.4 1.2L8.91 13.3a3.04 3.04 0 0 0 0-2.6l6.69-3.9A3 3 0 1 0 15 5a3 3 0 0 0 .09.7L8.04 9.81A3 3 0 1 0 8 14.19l7.09 4.14A3 3 0 1 0 18 16Z"/></svg></div>
+      <h2 id="share-title">Share NDT</h2>
+      <p>Scan the QR code or copy the link to share this digital card.</p>
+      <div class="qr-container"><img id="shareQr" src="https://api.qrserver.com/v1/create-qr-code/?size=174x174&amp;data=https%3A%2F%2Fnabeeldartransport.com" alt="QR code for the NDT digital card"></div>
+      <div class="modal-actions">
+        <button class="modal-button copy" id="copyLinkBtn" type="button">Copy profile link</button>
+        <button class="modal-button close" id="closeModalBtn" type="button">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">Profile link copied</div>
+
+  <script>
+    const shareBtn = document.getElementById('shareBtn');
+    const qrModal = document.getElementById('qrModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const copyLinkBtn = document.getElementById('copyLinkBtn');
+    const shareQr = document.getElementById('shareQr');
+    const toast = document.getElementById('toast');
+    const saveContactBtn = document.getElementById('saveContactBtn');
+
+    const profileUrl = window.location.protocol === 'file:' ? 'https://nabeeldartransport.com' : window.location.href;
+    shareQr.src = `https://api.qrserver.com/v1/create-qr-code/?size=174x174&data=${encodeURIComponent(profileUrl)}`;
+
+    function openModal() {
+      qrModal.classList.add('active');
+      qrModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      closeModalBtn.focus();
+    }
+
+    function closeModal() {
+      qrModal.classList.remove('active');
+      qrModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      shareBtn.focus();
+    }
+
+    shareBtn.addEventListener('click', async () => {
+      if (navigator.share) {
+        try {
+          await navigator.share({ title: 'Nabeel Dar Transport LLC', text: 'NDT — crane rental, heavy lifting and transport solutions in the UAE.', url: profileUrl });
+          return;
+        } catch (error) {
+          if (error.name === 'AbortError') return;
+        }
+      }
+      openModal();
+    });
+
+    closeModalBtn.addEventListener('click', closeModal);
+    qrModal.addEventListener('click', (event) => { if (event.target === qrModal) closeModal(); });
+    document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && qrModal.classList.contains('active')) closeModal(); });
+
+    copyLinkBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(profileUrl);
+      } catch (_) {
+        const field = document.createElement('textarea');
+        field.value = profileUrl;
+        field.setAttribute('readonly', '');
+        field.style.position = 'fixed';
+        field.style.opacity = '0';
+        document.body.appendChild(field);
+        field.select();
+        document.execCommand('copy');
+        field.remove();
+      }
+      closeModal();
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2200);
+    });
+
+    saveContactBtn.addEventListener('click', () => {
+      const vcardData = `BEGIN:VCARD\r\nVERSION:3.0\r\nN:Transport LLC;Nabeel Dar;;;\r\nFN:Nabeel Dar Transport LLC (NDT)\r\nORG:Nabeel Dar Transport LLC\r\nTITLE:Heavy Equipment Rental & Crane Rental\r\nTEL;TYPE=WORK,VOICE:+971552952354\r\nTEL;TYPE=CELL,VOICE,MSG:+971552952354\r\nEMAIL;TYPE=WORK,INTERNET:salesenquiry@nabeeldartransport.com\r\nEMAIL;TYPE=HOME,INTERNET:info@nabeeldartransport.com\r\nURL;TYPE=WORK:https://nabeeldartransport.com\r\nADR;TYPE=WORK:;;Dubai;Dubai;;;United Arab Emirates\r\nNOTE:Heavy Equipment Rental, Crane Rental (25T - 400T), Heavy Lifting, Heavy Transportation, Rigging & Mobilisation.\r\nEND:VCARD`;
+      saveContactBtn.href = URL.createObjectURL(new Blob([vcardData], { type: 'text/vcard;charset=utf-8' }));
+    });
+  </script>
+</body>
+</html>

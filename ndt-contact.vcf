@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Transport LLC;Nabeel Dar;;;
+FN:Nabeel Dar Transport LLC (NDT)
+ORG:Nabeel Dar Transport LLC
+TITLE:Heavy Equipment Rental & Crane Rental
+TEL;TYPE=WORK,VOICE;VALUE=uri:tel:+971552952354
+TEL;TYPE=CELL,VOICE,MSG;VALUE=uri:tel:+971552952354
+EMAIL;TYPE=WORK,INTERNET:salesenquiry@nabeeldartransport.com
+EMAIL;TYPE=HOME,INTERNET:info@nabeeldartransport.com
+URL;TYPE=WORK:https://nabeeldartransport.com
+ADR;TYPE=WORK,POSTAL,PARCEL:;;Dubai;Dubai;;;United Arab Emirates
+NOTE:Heavy Equipment Rental, Crane Rental (25 Ton - 400 Ton), Heavy Lifting, Heavy Transportation, Rigging & Project Mobilisation.
+END:VCARD

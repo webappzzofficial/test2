@@ -1,0 +1,761 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ==========================================================================
+   RESET & PRINT MEDIA SETUP
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    background-color: #FFFFFF;
+  }
+  .page {
+    page-break-after: always;
+    page-break-inside: avoid;
+  }
+}
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: #1D1D1F;
+  background-color: #FFFFFF;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   PAGE STRUCTURING (A4 PORTRAIT: 210mm x 297mm)
+   ========================================================================== */
+.page {
+  width: 210mm;
+  height: 297mm;
+  position: relative;
+  overflow: hidden;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Theme overrides */
+.page.theme-dark {
+  background-color: #0A0A0A;
+  color: #FFFFFF;
+}
+
+.page.theme-gray {
+  background-color: #F5F5F7;
+  color: #1D1D1F;
+}
+
+/* Page inner container (adds 20mm margin) */
+.page-container {
+  padding: 20mm;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  z-index: 10;
+}
+
+/* ==========================================================================
+   HEADER & FOOTER (PAGES 2-15)
+   ========================================================================== */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #D2D2D7;
+  padding-bottom: 5mm;
+  margin-bottom: 8mm;
+}
+
+.page-header.dark {
+  border-bottom-color: #333333;
+}
+
+.header-brand {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.header-tagline {
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8E8E93;
+}
+
+.page-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #D2D2D7;
+  padding-top: 5mm;
+  margin-top: 8mm;
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.page-footer.dark {
+  border-top-color: #333333;
+  color: #8E8E93;
+}
+
+.footer-left {
+  color: #8E8E93;
+}
+
+.footer-right {
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   TYPOGRAPHY
+   ========================================================================== */
+h1, h2, h3, h4 {
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+.text-huge {
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.text-large {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.019em;
+}
+
+.text-medium {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.headline-sub {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #F5B800;
+  text-transform: uppercase;
+  margin-bottom: 4mm;
+}
+
+.headline-sub.white {
+  color: #FFFFFF;
+}
+
+p.body-text {
+  font-size: 11px;
+  line-height: 1.6;
+  color: #48484A;
+  margin-bottom: 4mm;
+  font-weight: 400;
+}
+
+.theme-dark p.body-text {
+  color: #D2D2D7;
+}
+
+/* Bullet Lists */
+.bullet-list {
+  list-style: none;
+  margin-bottom: 5mm;
+}
+
+.bullet-list li {
+  font-size: 11px;
+  line-height: 1.7;
+  color: #48484A;
+  padding-left: 5mm;
+  position: relative;
+  margin-bottom: 2mm;
+}
+
+.theme-dark .bullet-list li {
+  color: #D2D2D7;
+}
+
+.bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 5px;
+  height: 5px;
+  background-color: #F5B800;
+}
+
+/* ==========================================================================
+   LAYOUT UTILITIES & GRIDS
+   ========================================================================== */
+.content-main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10mm;
+  height: 100%;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 6mm;
+}
+
+.flex-col-between {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Accent Color helper */
+.color-accent {
+  color: #F5B800;
+}
+
+/* ==========================================================================
+   COVER PAGE SPECIFIC (PAGE 01)
+   ========================================================================== */
+.cover-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  object-fit: cover;
+}
+
+.cover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0.1) 40%, rgba(10,10,10,0.9) 100%);
+  z-index: 2;
+}
+
+.cover-logo-container {
+  background-color: #FFFFFF;
+  padding: 6mm 10mm;
+  align-self: flex-start;
+  z-index: 10;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.cover-logo {
+  height: 12mm;
+  width: auto;
+  display: block;
+}
+
+.cover-content {
+  z-index: 10;
+  color: #FFFFFF;
+  margin-top: auto;
+}
+
+.cover-title {
+  font-size: 52px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 2mm;
+}
+
+.cover-year {
+  font-size: 32px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  margin-bottom: 8mm;
+  color: #F5B800;
+}
+
+.cover-sub {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  line-height: 1.8;
+  border-top: 1px solid rgba(255,255,255,0.3);
+  padding-top: 5mm;
+  margin-bottom: 10mm;
+}
+
+.cover-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #D2D2D7;
+}
+
+/* ==========================================================================
+   EDITORIAL IMAGE CONTAINERS
+   ========================================================================== */
+.editorial-image-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.editorial-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   PRODUCTS & SERVICES OVERVIEW (PAGE 04)
+   ========================================================================== */
+.services-overview-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 8mm;
+  height: 100%;
+}
+
+.services-list-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.service-item-row {
+  display: flex;
+  align-items: flex-start;
+  border-bottom: 1px solid #F5F5F7;
+  padding-bottom: 3mm;
+  margin-bottom: 3mm;
+}
+
+.service-num {
+  font-size: 24px;
+  font-weight: 800;
+  color: #D2D2D7;
+  width: 12mm;
+  line-height: 1;
+}
+
+.service-item-row:hover .service-num {
+  color: #F5B800;
+}
+
+.service-details {
+  flex-grow: 1;
+}
+
+.service-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1mm;
+}
+
+.service-desc {
+  font-size: 9px;
+  color: #8E8E93;
+  line-height: 1.4;
+}
+
+.services-images-column {
+  display: flex;
+  flex-direction: column;
+  gap: 6mm;
+}
+
+.service-image-box {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ==========================================================================
+   HEAVY EQUIPMENT RENTAL (PAGE 06)
+   ========================================================================== */
+.equip-category-box {
+  background-color: #F5F5F7;
+  padding: 6mm;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.equip-category-title {
+  font-size: 14px;
+  font-weight: 800;
+  border-bottom: 2px solid #000000;
+  padding-bottom: 2mm;
+  margin-bottom: 4mm;
+}
+
+.equip-category-list {
+  list-style: none;
+}
+
+.equip-category-list li {
+  font-size: 11px;
+  font-weight: 600;
+  color: #48484A;
+  padding: 2mm 0;
+  border-bottom: 1px solid #E5E5EA;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.equip-category-list li:last-child {
+  border-bottom: none;
+}
+
+/* ==========================================================================
+   OUR FLEET CARD GRID (PAGE 12)
+   ========================================================================== */
+.fleet-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5mm;
+}
+
+.fleet-card {
+  background-color: #F5F5F7;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #E5E5EA;
+}
+
+.fleet-card-image-box {
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  position: relative;
+}
+
+.fleet-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fleet-card-info {
+  padding: 4mm;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.fleet-card-category {
+  font-size: 8px;
+  font-weight: 700;
+  color: #8E8E93;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1mm;
+}
+
+.fleet-card-name {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #1D1D1F;
+}
+
+/* ==========================================================================
+   INDUSTRIES WE SERVE & WHY CHOOSE NDT
+   ========================================================================== */
+.industries-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5mm;
+}
+
+.industry-tag-row {
+  display: flex;
+  align-items: center;
+  padding: 3mm 4mm;
+  background-color: #F5F5F7;
+  border-left: 3px solid #000000;
+}
+
+.industry-tag-row.highlight {
+  border-left-color: #F5B800;
+  background-color: #FFFFFF;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.industry-tag-name {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Why NDT Numbers */
+.why-ndt-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8mm;
+}
+
+.why-ndt-card {
+  display: flex;
+  gap: 4mm;
+  align-items: flex-start;
+}
+
+.why-ndt-number {
+  font-size: 36px;
+  font-weight: 800;
+  color: #F5B800;
+  line-height: 1;
+}
+
+.why-ndt-content {
+  flex-grow: 1;
+}
+
+.why-ndt-title {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 1.5mm;
+  letter-spacing: 0.05em;
+}
+
+.why-ndt-desc {
+  font-size: 9.5px;
+  color: #48484A;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   UAE COVERAGE (PAGE 15)
+   ========================================================================== */
+.coverage-layout {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 8mm;
+  align-items: center;
+  height: 100%;
+}
+
+.map-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.map-svg {
+  width: 100%;
+  height: auto;
+  max-height: 180mm;
+}
+
+.region-tag-box {
+  background-color: #F5F5F7;
+  padding: 5mm;
+  margin-bottom: 4mm;
+  border-left: 3px solid #D2D2D7;
+}
+
+.region-tag-box.active {
+  border-left-color: #F5B800;
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.region-tag-title {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 1mm;
+}
+
+.region-tag-desc {
+  font-size: 9.5px;
+  color: #48484A;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   CONTACT / BACK COVER SPECIFIC (PAGE 16)
+   ========================================================================== */
+.back-cover-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  object-fit: cover;
+}
+
+.back-cover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 10, 0.88);
+  z-index: 2;
+}
+
+.back-logo-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  padding-bottom: 8mm;
+  margin-bottom: 10mm;
+}
+
+.back-logo-white-bg {
+  background-color: #FFFFFF;
+  padding: 4mm 6mm;
+  display: block;
+}
+
+.back-logo {
+  height: 10mm;
+  width: auto;
+  display: block;
+}
+
+.back-content-grid {
+  display: grid;
+  grid-template-columns: 1.10fr 0.90fr;
+  gap: 10mm;
+  margin-top: 5mm;
+  flex-grow: 1;
+}
+
+.contact-info-block {
+  display: flex;
+  flex-direction: column;
+  gap: 5mm;
+}
+
+.contact-channel {
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 3.5mm;
+}
+
+.contact-label {
+  font-size: 8.5px;
+  font-weight: 700;
+  color: #8E8E93;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5mm;
+}
+
+.contact-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: 0.02em;
+}
+
+.contact-value a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.contact-value.accent {
+  color: #F5B800;
+}
+
+/* Call to Action & QR Code */
+.back-cta-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 8mm;
+  text-align: center;
+}
+
+.cta-header {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  margin-bottom: 6mm;
+  color: #FFFFFF;
+}
+
+.qr-box {
+  background-color: #FFFFFF;
+  padding: 4mm;
+  border-radius: 4px;
+  margin-bottom: 5mm;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+}
+
+.qr-image {
+  width: 38mm;
+  height: 38mm;
+  display: block;
+}
+
+.cta-label {
+  font-size: 9px;
+  font-weight: 700;
+  color: #F5B800;
+  letter-spacing: 0.15em;
+  margin-bottom: 1mm;
+}
+
+.cta-desc {
+  font-size: 8px;
+  color: #D2D2D7;
+  line-height: 1.4;
+}
+
+.back-footer {
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding-top: 6mm;
+  margin-top: 10mm;
+  font-size: 8.5px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: #8E8E93;
+  display: flex;
+  justify-content: space-between;
+}
